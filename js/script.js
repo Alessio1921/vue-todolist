@@ -2,14 +2,16 @@ const app=new Vue({
   el:"#app",
   data:{
     userText:"",
-    list:[],
+    selected: '',
+    list:[]
   },
   methods:{
-    addItem(userText){
-      if(userText!==""){
+    addItem(userText,selected){
+      if(userText!=="" && selected!==""){
         this.list.push({
           text:userText.trim(),
-          done:false
+          done:false,
+          category:this.selected
         }),
         this.userText=""
       }
@@ -20,6 +22,6 @@ const app=new Vue({
     checked(index){
       this.list[index].done=!this.list[index].done,
       console.log(this.list[index].done)
-    }
+    },
   }
 })
